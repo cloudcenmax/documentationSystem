@@ -60,35 +60,35 @@
                     <div class="col-3">
                         <div class="card shadow-lg bg-primary my-3 category-box">
                             <div class="card-body mb-0">
-                                <h3 class="text-white m-0">cPanel</h3>
+                                <h3 class="text-white m-0">DirectAdmin</h3>
                             </div>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card shadow-lg bg-primary my-3 category-box">
                             <div class="card-body mb-0">
-                                <h3 class="text-white m-0">cPanel</h3>
+                                <h3 class="text-white m-0">Plesk</h3>
                             </div>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card shadow-lg bg-primary my-3 category-box">
                             <div class="card-body mb-0">
-                                <h3 class="text-white m-0">cPanel</h3>
+                                <h3 class="text-white m-0">Webuzo</h3>
                             </div>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card shadow-lg bg-primary my-3 category-box">
                             <div class="card-body mb-0">
-                                <h3 class="text-white m-0">cPanel</h3>
+                                <h3 class="text-white m-0">Cloud Panel</h3>
                             </div>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card shadow-lg bg-primary my-3 category-box">
                             <div class="card-body mb-0">
-                                <h3 class="text-white m-0">cPanel</h3>
+                                <h3 class="text-white m-0">Linux</h3>
                             </div>
                         </div>
                     </div>
@@ -96,6 +96,29 @@
                         <div class="card bg-soft-blue my-3 category-add">
                             <div class="card-body mb-0">
                                 <h3 class="m-0"><i class="uil uil-folder-plus m-0"></i> Add Category</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mt-5">Articles (23)</h3>
+                <div class="mc-field-group input-group mb-5">
+                    <input type="text" name="query" class="form-control" placeholder="Search Articles" id="mce-EMAIL2"
+                        autocomplete="off">
+                    <input type="submit" value="Search" name="subscribe" id="mc-embedded-subscribe2"
+                        class="btn btn-orange">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card shadow-none">
+                            <div class="card-header p-4 border-0 bg-red text-white">How to increase PHP Memory Limit
+                                in CloudLinux?
+                            </div>
+                            <div class="card-body p-4 bg-soft-orange">Written By: Username • Edited on: 16/12/2023</div>
+                            <div class="card-footer p-4 bg-pale-orange">
+                                <span class="badge bg-pale-ash text-blue rounded-pill">cPanel</span>
+                                <span class="badge bg-pale-ash text-blue rounded-pill">Cloud Hosting</span>
+                                <span class="badge bg-pale-ash text-blue rounded-pill">500 Error</span>
+                                <span class="badge bg-pale-ash text-blue rounded-pill">Memory Exhausted Error</span>
                             </div>
                         </div>
                     </div>
