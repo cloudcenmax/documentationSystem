@@ -54,6 +54,11 @@ if ($catid == 0) {
                         Article Edited Successfully!
                     </div>
                 <?php endif; ?>
+                <?php if (isset($_GET['articleTrashed'])) : ?>
+                    <div class="alert alert-danger">
+                        Article Deleted Successfully!
+                    </div>
+                <?php endif; ?>
                 <h1>Category: <?= $thisCategory['name']; ?></h1>
                 <div class="row">
                     <?php foreach ($categories as $category) : ?>

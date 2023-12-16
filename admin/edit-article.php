@@ -34,7 +34,7 @@ $categories = $database->select("categories", "*");
     <?php include 'header.php'; ?>
     <section class="wrapper gradient-8">
       <div class="container pt-12 pt-md-14 pb-14 pb-md-16">
-        <h1>Edit Article</h1>
+        <h1>Edit Article <small><a class="text-red" onclick="trash()">(Trash)</a></small></h1>
         <form action="edit-article-processor.php" method="post">
           <input type="hidden" name="id" value="<?= $post['id'] ?>">
           <input type="text" name="title" class="form-control mb-1" placeholder="Article Name" autocomplete="off" value="<?= $post['title'] ?>">
@@ -87,6 +87,14 @@ $categories = $database->select("categories", "*");
       min_height: 500,
       toolbar: +'code'
     });
+
+    function trash() {
+      if (window.confirm('Do you really want to delete this article? This action cannot be undone!')) {
+        window.location = 'trash-article.php?id=<?= $post['id'] ?>';
+      } else {
+        die();
+      }
+    }
   </script>
   <style>
     .category-box:hover {
