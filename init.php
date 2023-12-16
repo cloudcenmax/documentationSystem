@@ -65,6 +65,10 @@ $database->create("categories", [
         "VARCHAR(50)",
         "NOT NULL"
     ],
+    'parent_id' => [
+        "INT",
+        "NOT NULL"
+    ],
     "description" => [
         "TEXT",
         "NOT NULL"
@@ -150,6 +154,18 @@ $database->create("posts", [
     ],
     "tags" => [
         "VARCHAR(50)"
+    ],
+    'meta_title' => [
+        "VARCHAR(50)",
+        "NOT NULL"
+    ],
+    'meta_description' => [
+        "TEXT",
+        "NOT NULL"
+    ],
+    'meta_keywords' => [
+        "VARCHAR(150)",
+        "NOT NULL"
     ],
     "created_at" => [
         "DATETIME",
