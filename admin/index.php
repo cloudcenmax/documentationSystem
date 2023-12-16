@@ -4,18 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="An impressive and flawless site template that includes various UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website.">
-    <meta name="keywords"
-        content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template">
+    <meta name="description" content="An impressive and flawless site template that includes various UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website.">
+    <meta name="keywords" content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template">
     <meta name="author" content="elemis">
     <title>Sandbox - Modern & Multipurpose Bootstrap 5 Template</title>
     <link rel="shortcut icon" href="./assets/img/favicon.png">
     <link rel="stylesheet" href="./assets/css/plugins.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script type="text/javascript"
-        src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=23YqD_7NKa9ouyw6MVd5hkLChYCdVE6z4GHOJq9qQ44K8awRJR9SEwIzpqN6DaoT6_t-BjzyA3A3mtBirh1ZlmULEfLBSncsRue_GvJG6YThfhneq5AfqOyZkzeyFUHn"
-        charset="UTF-8"></script>
 </head>
 
 <body>
@@ -29,8 +24,7 @@
                     <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
                         <div class="offcanvas-header d-lg-none">
                             <h3 class="text-white fs-30 mb-0">Sandbox</h3>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                             <ul class="navbar-nav">
@@ -102,10 +96,8 @@
                 </div>
                 <h3 class="mt-5">Articles (23)</h3>
                 <div class="mc-field-group input-group mb-5">
-                    <input type="text" name="query" class="form-control" placeholder="Search Articles" id="mce-EMAIL2"
-                        autocomplete="off">
-                    <input type="submit" value="Search" name="subscribe" id="mc-embedded-subscribe2"
-                        class="btn btn-orange">
+                    <input type="text" name="query" class="form-control" placeholder="Search Articles" id="mce-EMAIL2" autocomplete="off">
+                    <input type="submit" value="Search" name="subscribe" id="mc-embedded-subscribe2" class="btn btn-orange">
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -135,17 +127,17 @@
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/theme.js"></script>
     <style>
-    .category-box:hover {
-        transform: scale(1.01);
-        transition-duration: 0.1s;
-        background: #45C4A0 !important;
-    }
+        .category-box:hover {
+            transform: scale(1.01);
+            transition-duration: 0.1s;
+            background: #45C4A0 !important;
+        }
 
-    .category-add:hover {
-        transform: scale(1.01);
-        transition-duration: 0.1s;
-        background: #F1FBF8 !important;
-    }
+        .category-add:hover {
+            transform: scale(1.01);
+            transition-duration: 0.1s;
+            background: #F1FBF8 !important;
+        }
     </style>
 </body>
 

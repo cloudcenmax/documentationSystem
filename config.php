@@ -8,5 +8,5 @@ $database = new Medoo([
     'database_name' => 'documentation',
     'server' => 'localhost',
     'username' => 'root',
-    'password' => ''
+    'password' => 'mysql'
 ]);
