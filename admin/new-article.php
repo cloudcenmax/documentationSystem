@@ -23,32 +23,8 @@ $categories = $database->select("categories", "*");
 
 <body>
     <div class="content-wrapper">
-        <header class="wrapper bg-dark navbar-dark">
-            <nav class="navbar navbar-expand-lg center-nav transparent navbar-light">
-                <div class="container flex-lg-row flex-nowrap align-items-center">
-                    <div class="navbar-brand w-100">
-                        <h4 class="text-white m-0">Documentation System</h4>
-                    </div>
-                    <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
-                        <div class="offcanvas-header d-lg-none">
-                            <h3 class="text-white fs-30 mb-0">Sandbox</h3>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link text-white" href="#">Link</a></li>
-                            </ul>
-                        </div>
-                        <!-- /.offcanvas-body -->
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container -->
-            </nav>
-            <!-- /.navbar -->
-        </header>
-        <!-- /header -->
-        <section class="wrapper bg-light">
+        <?php include 'header.php'; ?>
+        <section class="wrapper gradient-8">
             <div class="container pt-12 pt-md-14 pb-14 pb-md-16">
                 <h1>Add New Article</h1>
                 <form action="new-article-processor.php" method="post">
@@ -58,16 +34,18 @@ $categories = $database->select("categories", "*");
                     <h2 class="fs-15 text-uppercase text-line text-navy mt-6">Publishing Settings</h2>
                     <hr class="mb-3 mt-1">
 
-                    <select class="form-control mt-1">
-                        <option value="NULL" selected disabled>Select a Category</option>
+                    <select class="form-control mt-1" name="category">
+                        <option value="0" selected>Parent Category</option>
                         <?php foreach ($categories as $category) : ?>
-                            <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                            <option value="<?= $category['id'] ?>" <?php if ($_GET['catid'] == $category['id']) {
+                                                                        echo "selected";
+                                                                    } ?>>Under <?= $category['name'] ?> Category</option>
                         <?php endforeach; ?>
                     </select>
                     <input type="text" name="tags" class="form-control mb-1 mt-1" placeholder="Tags (separated by comma ie., cpanel,whm,directadmin)" autocomplete="off">
 
                     <hr class="my-3">
-                    <h2 class="fs-15 text-uppercase text-line text-navy m-0">SEO Settings</h2>
+                    <h2 class="fs-15 text-uppercase text-line text-navy m-0">SEO Settings (optional)</h2>
                     <hr class="mb-3 mt-1">
 
                     <input type="text" name="meta_title" class="form-control mb-1 mt-1" placeholder="Meta Title" autocomplete="off">

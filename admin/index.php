@@ -1,3 +1,28 @@
+<?php
+
+include '../config.php';
+if (isset($_GET['catid'])) {
+    $catid = $_GET['catid'];
+} else {
+    $catid = 0;
+}
+$categories = $database->select("categories", "*", [
+    'parent_id' => $catid,
+]);
+$posts = $database->select("posts", "*", [
+    'category_id' => $catid,
+]);
+
+if ($catid == 0) {
+    $thisCategory['name'] = 'Home';
+} else {
+    $thisCategory = $database->get("categories", "*", [
+        'id' => $catid
+    ]);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,105 +40,69 @@
 
 <body>
     <div class="content-wrapper">
-        <header class="wrapper bg-dark navbar-dark">
-            <nav class="navbar navbar-expand-lg center-nav transparent navbar-light">
-                <div class="container flex-lg-row flex-nowrap align-items-center">
-                    <div class="navbar-brand w-100">
-                        <h4 class="text-white m-0">Documentation System</h4>
-                    </div>
-                    <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
-                        <div class="offcanvas-header d-lg-none">
-                            <h3 class="text-white fs-30 mb-0">Sandbox</h3>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link text-white" href="#">Link</a></li>
-                            </ul>
-                        </div>
-                        <!-- /.offcanvas-body -->
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container -->
-            </nav>
-            <!-- /.navbar -->
-        </header>
+        <?php include 'header.php'; ?>
         <!-- /header -->
         <section class="wrapper bg-light">
             <div class="container pt-12 pt-md-14 pb-14 pb-md-16">
-                <h1>Category: Home</h1>
+                <?php if (isset($_GET['articleAdded'])) : ?>
+                    <div class="alert alert-success">
+                        Article Added Successfully!
+                    </div>
+                <?php endif; ?>
+                <?php if (isset($_GET['articleEdited'])) : ?>
+                    <div class="alert alert-success">
+                        Article Edited Successfully!
+                    </div>
+                <?php endif; ?>
+                <h1>Category: <?= $thisCategory['name']; ?></h1>
                 <div class="row">
-                    <div class="col-3">
-                        <div class="card shadow-lg bg-primary my-3 category-box">
-                            <div class="card-body mb-0">
-                                <h3 class="text-white m-0">cPanel</h3>
-                            </div>
+                    <?php foreach ($categories as $category) : ?>
+                        <div class="col-3">
+                            <a href="?catid=<?= $category['id']; ?>">
+                                <div class="card shadow-lg bg-primary my-3 category-box">
+                                    <div class="card-body mb-0">
+                                        <h3 class="text-white m-0"><?= $category['name']; ?></h3>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                     <div class="col-3">
-                        <div class="card shadow-lg bg-primary my-3 category-box">
-                            <div class="card-body mb-0">
-                                <h3 class="text-white m-0">DirectAdmin</h3>
+                        <a href="new-category.php?catid=<?= $catid ?>">
+                            <div class="card bg-soft-blue my-3 category-add">
+                                <div class="card-body mb-0">
+                                    <h3 class="m-0"><i class="uil uil-folder-plus m-0"></i> Sub-Category</h3>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card shadow-lg bg-primary my-3 category-box">
-                            <div class="card-body mb-0">
-                                <h3 class="text-white m-0">Plesk</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card shadow-lg bg-primary my-3 category-box">
-                            <div class="card-body mb-0">
-                                <h3 class="text-white m-0">Webuzo</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card shadow-lg bg-primary my-3 category-box">
-                            <div class="card-body mb-0">
-                                <h3 class="text-white m-0">Cloud Panel</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card shadow-lg bg-primary my-3 category-box">
-                            <div class="card-body mb-0">
-                                <h3 class="text-white m-0">Linux</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card bg-soft-blue my-3 category-add">
-                            <div class="card-body mb-0">
-                                <h3 class="m-0"><i class="uil uil-folder-plus m-0"></i> Add Category</h3>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
-                <h3 class="mt-5">Articles (23)</h3>
+                <h3 class="mt-5">Articles (<?= count($posts) ?>) <a href="new-article.php?catid=<?= $catid ?>">Create new?</a></h3>
                 <div class="mc-field-group input-group mb-5">
                     <input type="text" name="query" class="form-control" placeholder="Search Articles" id="mce-EMAIL2" autocomplete="off">
                     <input type="submit" value="Search" name="subscribe" id="mc-embedded-subscribe2" class="btn btn-orange">
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="card shadow-none">
-                            <div class="card-header p-4 border-0 bg-red text-white">How to increase PHP Memory Limit
-                                in CloudLinux?
-                            </div>
-                            <div class="card-body p-4 bg-soft-orange">Written By: Username • Edited on: 16/12/2023</div>
-                            <div class="card-footer p-4 bg-pale-orange">
-                                <span class="badge bg-pale-ash text-blue rounded-pill">cPanel</span>
-                                <span class="badge bg-pale-ash text-blue rounded-pill">Cloud Hosting</span>
-                                <span class="badge bg-pale-ash text-blue rounded-pill">500 Error</span>
-                                <span class="badge bg-pale-ash text-blue rounded-pill">Memory Exhausted Error</span>
-                            </div>
+                    <?php foreach ($posts as $post) : ?>
+                        <div class="col-md-6">
+                            <a href="edit-article.php?id=<?= $post['id'] ?>">
+                                <div class="card">
+                                    <div class="card-header p-4 border-0 bg-ligt text-blue"><?= $post['title']; ?></div>
+                                    <div class="card-body p-4 bg-soft-orange text-dark">Last Edited/Updated on: <?= $post['updated_at'] ?></div>
+                                    <?php
+                                    if ($post['tags'] != '') {
+                                        $tags = explode(',', $post['tags']);
+                                    ?>
+                                        <div class="card-footer p-4 bg-pale-orange">
+                                            <?php foreach ($tags as $tag) : ?>
+                                                <span class="badge bg-pale-ash text-blue rounded-pill"><?= $tag ?></span>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </a>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </section>

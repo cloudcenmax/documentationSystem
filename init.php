@@ -125,7 +125,7 @@ $database->create("posts", [
         "PRIMARY KEY"
     ],
     "title" => [
-        "VARCHAR(50)",
+        "VARCHAR(100)",
         "NOT NULL"
     ],
     "content" => [
@@ -147,16 +147,13 @@ $database->create("posts", [
         "VARCHAR(50)"
     ],
     'meta_title' => [
-        "VARCHAR(50)",
-        "NOT NULL"
+        "VARCHAR(50)"
     ],
     'meta_description' => [
-        "TEXT",
-        "NOT NULL"
+        "TEXT"
     ],
     'meta_keywords' => [
-        "VARCHAR(150)",
-        "NOT NULL"
+        "VARCHAR(150)"
     ],
     "created_at" => [
         "DATETIME",
