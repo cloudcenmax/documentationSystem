@@ -14,7 +14,8 @@ $database->update("posts", [
   "meta_title" => $_POST['meta_title'],
   "meta_description" => $_POST['meta_description'],
   "meta_keywords" => $_POST['meta_keywords'],
-  "updated_at" => date('Y-m-d H:i:s')
+  "updated_at" => date('Y-m-d H:i:s'),
+  'slug' => $_POST['slug']
 ], [
   "id" => $_POST['id']
 ]);

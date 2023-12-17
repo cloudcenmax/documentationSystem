@@ -63,6 +63,10 @@ $database->create("categories", [
     "description" => [
         "TEXT",
         "NOT NULL"
+    ],
+    'slug' => [
+        "VARCHAR(100)",
+        "NOT NULL"
     ]
 ]);
 
@@ -164,6 +168,10 @@ $database->create("posts", [
         "DATETIME",
         "NOT NULL",
         "DEFAULT CURRENT_TIMESTAMP"
+    ],
+    'slug' => [
+        "VARCHAR(100)",
+        "NOT NULL"
     ]
 ]);
 

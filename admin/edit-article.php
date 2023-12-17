@@ -22,7 +22,7 @@ $categories = $database->select("categories", "*");
   <meta name="description" content="An impressive and flawless site template that includes various UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website.">
   <meta name="keywords" content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template">
   <meta name="author" content="elemis">
-  <title>Sandbox - Modern & Multipurpose Bootstrap 5 Template</title>
+  <title>Edit Article - Docs</title>
   <link rel="shortcut icon" href="./assets/img/favicon.png">
   <link rel="stylesheet" href="./assets/css/plugins.css">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -37,7 +37,8 @@ $categories = $database->select("categories", "*");
         <h1>Edit Article <small><a class="text-red" onclick="trash()">(Trash)</a></small></h1>
         <form action="edit-article-processor.php" method="post">
           <input type="hidden" name="id" value="<?= $post['id'] ?>">
-          <input type="text" name="title" class="form-control mb-1" placeholder="Article Name" autocomplete="off" value="<?= $post['title'] ?>">
+          <input type="text" name="title" id="name" class="form-control mb-1" placeholder="Article Name" autocomplete="off" value="<?= $post['title'] ?>">
+          <input type="text" name="slug" id="slug" class="form-control mb-1" placeholder="Article Slug" autocomplete="off" value="<?= $post['slug'] ?>">
           <textarea id="default" name="tinymce"><?= $post['content'] ?></textarea>
 
           <h2 class="fs-15 text-uppercase text-line text-navy mt-6">Publishing Settings</h2>
@@ -94,6 +95,12 @@ $categories = $database->select("categories", "*");
       } else {
         die();
       }
+    }
+
+    function slugProcessor() {
+      var name = document.getElementById('name').value;
+      var slug = name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      document.getElementById('slug').value = slug;
     }
   </script>
   <style>

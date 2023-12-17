@@ -6,7 +6,8 @@ require '../config.php';
 if (isset($_POST['catname'])) {
   $database->insert("categories", [
     "name" => $_POST['catname'],
-    "parent_id" => $_POST['parent_id']
+    "parent_id" => $_POST['parent_id'],
+    'slug' => $_POST['slug']
   ]);
   $created = $_POST['catname'];
 }
@@ -43,7 +44,8 @@ $categories = $database->select("categories", "*");
           </div>
         <?php endif; ?>
         <form method="post">
-          <input type="text" name="catname" class="form-control mb-1" placeholder="Category Name" autocomplete="off" required>
+          <input type="text" name="catname" id="name" class="form-control mb-1" placeholder="Category Name" onchange="slugProcessor()" autocomplete="off" required>
+          <input type="text" name="slug" class="form-control mb-1" id="slug" placeholder="Slug" autocomplete="off" required>
           <select class="form-control mt-1" name="parent_id">
             <option value="0" selected>No Parent Category</option>
             <?php foreach ($categories as $category) : ?>
@@ -76,6 +78,12 @@ $categories = $database->select("categories", "*");
       min_height: 500,
       toolbar: +'code'
     });
+
+    function slugProcessor() {
+      var name = document.getElementById('name').value;
+      var slug = name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      document.getElementById('slug').value = slug;
+    }
   </script>
   <style>
     .category-box:hover {

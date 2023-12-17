@@ -13,7 +13,8 @@ if (isset($_POST['tinymce'])) {
       "tags" => $_POST['tags'],
       "meta_title" => $_POST['meta_title'],
       "meta_keywords" => $_POST['meta_keywords'],
-      "meta_description" => $_POST['meta_description']
+      "meta_description" => $_POST['meta_description'],
+      'slug' => $_POST['slug']
     ]);
   } catch (Exception $e) {
     echo $e->getMessage();

@@ -28,7 +28,8 @@ $categories = $database->select("categories", "*");
             <div class="container pt-12 pt-md-14 pb-14 pb-md-16">
                 <h1>Add New Article</h1>
                 <form action="new-article-processor.php" method="post">
-                    <input type="text" name="title" class="form-control mb-1" placeholder="Article Name" autocomplete="off">
+                    <input type="text" name="title" id="name" class="form-control mb-1" placeholder="Article Name" onchange="slugProcessor()" autocomplete="off">
+                    <input type="text" name="slug" id="slug" class="form-control mb-1" placeholder="Article Slug" autocomplete="off">
                     <textarea id="default" name="tinymce">Hello, World!</textarea>
 
                     <h2 class="fs-15 text-uppercase text-line text-navy mt-6">Publishing Settings</h2>
@@ -78,6 +79,12 @@ $categories = $database->select("categories", "*");
             min_height: 500,
             toolbar: +'code'
         });
+
+        function slugProcessor() {
+            var name = document.getElementById('name').value;
+            var slug = name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+            document.getElementById('slug').value = slug;
+        }
     </script>
     <style>
         .category-box:hover {
