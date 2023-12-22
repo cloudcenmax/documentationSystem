@@ -4,7 +4,7 @@ This is a internal project of Cenmax for usage in internal applications. While o
 
 ## New Environment Setup (Manual Way, no automatic method yet)
 
-1. Copy paste the complete file. Create a blank MySQL database and run init.php to setup database
+1. Copy paste the complete file. Create a blank MySQL database and provide details in config.php and then run init.php to setup database schema.
 2. Manually insert admin user by using PhpMyAdmin
 3. Then, alter the environment.php as per your needs
 
