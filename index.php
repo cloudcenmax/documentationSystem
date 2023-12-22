@@ -1,6 +1,7 @@
 <?php
 
 include 'config.php';
+include 'environment.php';
 if (isset($_GET['slug'])) {
   $slug = $_GET['slug'];
 }
@@ -29,6 +30,15 @@ if ($catid == 0) {
   ]);
 }
 
+if (!isset($catid)) {
+  // Set the HTTP status code to 404
+  header("HTTP/1.0 404 Not Found");
+  // Display a custom error message
+  echo "404 - Page Not Found. Return to <a href='$baseUrl'>Home</a>";
+
+  die();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -42,9 +52,9 @@ if ($catid == 0) {
   <meta name="author" content="elemis">
   <title>Sandbox - Modern & Multipurpose Bootstrap 5 Template</title>
   <!-- /////////////// TODO: Change this before production /////////////// -->
-  <link rel="shortcut icon" href="http://localhost/documentationSystem/assets/img/favicon.png">
-  <link rel="stylesheet" href="http://localhost/documentationSystem/assets/css/plugins.css">
-  <link rel="stylesheet" href="http://localhost/documentationSystem/assets/css/style.css">
+  <link rel="shortcut icon" href="<?= $baseUrl ?>/assets/img/favicon.png">
+  <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/plugins.css">
+  <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/style.css">
   <!-- /////////////// TODO: Change this before production /////////////// -->
 </head>
 
@@ -57,10 +67,6 @@ if ($catid == 0) {
           <div class="row">
             <div class="col-md-7 col-lg-7 col-xl-5 mx-auto">
               <h1 class="display-1 mb-3 text-white"><?= $thisCategory['name']; ?></h1>
-              <div class="mc-field-group input-group mb-5">
-                <input type="text" name="query" class="form-control" placeholder="Search Articles" id="mce-EMAIL2" autocomplete="off">
-                <input type="submit" value="Search" name="subscribe" id="mc-embedded-subscribe2" class="btn btn-orange">
-              </div>
             </div>
             <!-- /column -->
           </div>
@@ -77,10 +83,10 @@ if ($catid == 0) {
         <div class="row">
           <?php foreach ($categories as $category) : ?>
             <div class="col-3">
-              <a href="http://localhost/documentationSystem/category/<?= $category['slug']; ?>">
-                <div class="card shadow bg-red my-3 category-box">
+              <a href="<?= $baseUrl ?>/category/<?= $category['slug']; ?>">
+                <div class="card bg-pale-sky my-3 category-box">
                   <div class="card-body mb-0">
-                    <h3 class="text-white m-0"><?= $category['name']; ?></h3>
+                    <h3 class="m-0"><?= $category['name']; ?></h3>
                   </div>
                 </div>
               </a>
@@ -88,10 +94,14 @@ if ($catid == 0) {
           <?php endforeach; ?>
         </div>
         <?php if (sizeof($categories) > 0) { ?><h3 class="mt-6">Articles</h3><?php } ?>
-        <div class="row">
+        <div class="mc-field-group input-group mb-5">
+          <input type="text" name="query" class="form-control" onkeyup="showResult(this.value)" placeholder="Search Articles" id="mce-EMAIL2" autocomplete="off">
+          <input type="submit" value="Search" name="subscribe" id="mc-embedded-subscribe2" class="btn btn-orange">
+        </div>
+        <div class="row" id="livesearch">
           <?php foreach ($posts as $post) : ?>
             <div class="col-md-6">
-              <a href="http://localhost/documentationSystem/article/<?= $post['slug'] ?>">
+              <a href="<?= $baseUrl ?>/article/<?= $post['slug'] ?>">
                 <div class="card mt-3 article-box">
                   <div class="card-header p-4 border-0 bg-ligt text-blue"><?= $post['title']; ?></div>
                 </div>
@@ -114,7 +124,6 @@ if ($catid == 0) {
     .category-box:hover {
       transform: scale(1.01);
       transition-duration: 0.1s;
-      background: #45C4A0 !important;
     }
 
     .article-box:hover {
@@ -123,6 +132,25 @@ if ($catid == 0) {
       background: #F1FBF8 !important;
     }
   </style>
+  <script>
+    function showResult(str) {
+      /*
+      if (str.length == 0) {
+        document.getElementById("livesearch").innerHTML = "";
+        document.getElementById("livesearch").style.border = "0px";
+        return;
+      }*/
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("livesearch").innerHTML = this.responseText;
+        }
+      }
+      /////////// TODO: Change this before production ///////////
+      xmlhttp.open("GET", "<?= $baseUrl ?>/livesearch.php?catid=<?= $catid ?>&q=" + str, true);
+      xmlhttp.send();
+    }
+  </script>
 </body>
 
 </html>

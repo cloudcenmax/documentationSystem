@@ -3,7 +3,6 @@ if (isset($_POST['tinymce'])) {
   include '../config.php';
   print_r($database->info());
   session_start();
-  $_SESSION['id'] = 1; /////////////// TODO: Change this before production ///////////////
   try {
     $database->insert("posts", [
       "title" => $_POST['title'],

@@ -1,6 +1,7 @@
 <?php
 
 include '../config.php';
+include '../environment.php';
 
 if (!isset($_POST['id'])) {
   header('Location: index.php');

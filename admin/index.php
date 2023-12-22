@@ -84,10 +84,10 @@ if ($catid == 0) {
                 </div>
                 <h3 class="mt-5">Articles (<?= count($posts) ?>) <a href="new-article.php?catid=<?= $catid ?>">Create new?</a></h3>
                 <div class="mc-field-group input-group mb-5">
-                    <input type="text" name="query" class="form-control" placeholder="Search Articles" id="mce-EMAIL2" autocomplete="off">
+                    <input type="text" name="query" class="form-control" onkeyup="showResult(this.value)" placeholder="Search Articles" id="mce-EMAIL2" autocomplete="off">
                     <input type="submit" value="Search" name="subscribe" id="mc-embedded-subscribe2" class="btn btn-orange">
                 </div>
-                <div class="row">
+                <div class="row" id="livesearch">
                     <?php foreach ($posts as $post) : ?>
                         <div class="col-md-6">
                             <a href="edit-article.php?id=<?= $post['id'] ?>">
@@ -120,6 +120,25 @@ if ($catid == 0) {
     </div>
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/theme.js"></script>
+    <script>
+        function showResult(str) {
+            /*
+            if (str.length == 0) {
+              document.getElementById("livesearch").innerHTML = "";
+              document.getElementById("livesearch").style.border = "0px";
+              return;
+            }*/
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("livesearch").innerHTML = this.responseText;
+                }
+            }
+            /////////// TODO: Change this before production ///////////
+            xmlhttp.open("GET", "livesearch.php?catid=<?= $catid ?>&q=" + str, true);
+            xmlhttp.send();
+        }
+    </script>
     <style>
         .category-box:hover {
             transform: scale(1.01);

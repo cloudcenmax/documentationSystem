@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_POST['username']) && isset($_POST['password'])) {
+if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -12,12 +12,13 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
         "password" => $password
     ]);
 
-    if(count($user) > 0) {
-        $_SESSION['user'] = $user[0];
+    if (count($user) > 0) {
+        $_SESSION['id'] = $user[0]['id'];
+        //echo $_SESSION['id'];
         header("Location: index.php");
     } else {
         header("Location: login.php?failed=true");
     }
 } else {
-    header("Location: login.php");
+    echo "Username or password is empty!";
 }
