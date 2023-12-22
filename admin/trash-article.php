@@ -11,3 +11,6 @@ $database->delete("posts", [
 ]);
 
 header('Location: index.php?articleTrashed');
+
+
+//
