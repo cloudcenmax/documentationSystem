@@ -6,14 +6,24 @@ if (isset($_GET['q'])) {
   $search = $_GET['q'];
   $catid = $_GET['catid'];
 
-  $posts = $database->select("posts", "*", [
-    "OR" => [
-      "title[~]" => $search,
-      "content[~]" => $search,
-      "tags[~]" => $search,
-    ],
-    'category_id' => $catid,
-  ]);
+  if ($catid == 0) {
+    $posts = $database->select("posts", "*", [
+      "OR" => [
+        "title[~]" => $search,
+        "content[~]" => $search,
+        "tags[~]" => $search,
+      ],
+    ]);
+  } else {
+    $posts = $database->select("posts", "*", [
+      "OR" => [
+        "title[~]" => $search,
+        "content[~]" => $search,
+        "tags[~]" => $search,
+      ],
+      'category_id' => $catid,
+    ]);
+  }
 }
 
 foreach ($posts as $post) { ?>
