@@ -1,9 +1,11 @@
 <?php
 
+include('../environment.php');
+
 /***************************************************
  * Only these origins are allowed to upload images *
  ***************************************************/
-$accepted_origins = array("http://localhost", "http://192.168.1.1", "http://example.com");
+$accepted_origins = array("http://localhost", "http://192.168.1.1", $baseUrl);
 
 /*********************************************
  * Change this line to set the upload folder *

@@ -129,6 +129,11 @@ if ($thisPost == null) {
     .post li :last-child {
       padding-bottom: 5px;
     }
+
+    .post img {
+      max-height: 100%;
+      max-width: 100%;
+    }
   </style>
 </body>
 
