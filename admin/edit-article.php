@@ -1,6 +1,7 @@
 <?php
 require '../vendor/autoload.php';
 require '../config.php';
+include 'session.php';
 
 if (!isset($_GET['id'])) {
   header('Location: index.php');

@@ -1,6 +1,7 @@
 <?php
 require '../vendor/autoload.php';
 require '../config.php';
+include 'session.php';
 
 $categories = $database->select("categories", "*");
 ?>

@@ -1,6 +1,7 @@
 <?php
 
 include '../config.php';
+include 'session.php';
 if (isset($_GET['catid'])) {
     $catid = $_GET['catid'];
 } else {

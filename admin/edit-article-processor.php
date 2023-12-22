@@ -2,6 +2,7 @@
 
 include '../config.php';
 include '../environment.php';
+include 'session.php';
 
 if (!isset($_POST['id'])) {
   header('Location: index.php');

@@ -2,6 +2,7 @@
 
 require '../vendor/autoload.php';
 require '../config.php';
+include 'session.php';
 
 if (isset($_POST['catname'])) {
   $database->insert("categories", [

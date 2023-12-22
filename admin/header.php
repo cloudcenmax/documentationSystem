@@ -1,6 +1,5 @@
 <?php
 include '../environment.php';
-include 'session.php';
 ?>
 
 <header class="wrapper">

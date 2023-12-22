@@ -1,6 +1,7 @@
 <?php
 if (isset($_POST['tinymce'])) {
   include '../config.php';
+  include 'session.php';
   print_r($database->info());
   session_start();
   try {
