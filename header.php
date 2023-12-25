@@ -9,7 +9,11 @@ $categories1 = $database->select("categories", "*", [
     <div class="container flex-lg-row flex-nowrap align-items-center">
       <div class="navbar-brand w-100">
         <a href="<?= $baseUrl ?>/">
-          <h4 class="m-0"><?= $systemName ?></h4>
+          <?php if ($logoUrl != "") { ?>
+            <img src="<?= $logoUrl ?>" alt="<?= $systemName ?>" style="max-height: 35px">
+          <?php } else { ?>
+            <h4 class="m-0"><?= $systemName ?></h4>
+          <?php } ?>
         </a>
       </div>
       <div class="navbar-collapse">
