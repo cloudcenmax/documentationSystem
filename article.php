@@ -33,6 +33,7 @@ if ($thisPost == null) {
   <link rel="shortcut icon" href="<?= $baseUrl ?>/assets/img/favicon.png">
   <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/plugins.css">
   <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/style.css">
+  <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/fonts/thicccboi.css">
 </head>
 
 <body>
@@ -126,13 +127,24 @@ if ($thisPost == null) {
       font-size: 18px;
     }
 
+    .post li {
+      padding-bottom: 7px;
+    }
+
     .post li :last-child {
-      padding-bottom: 5px;
+      padding-bottom: 10px;
     }
 
     .post img {
       max-height: 100%;
       max-width: 100%;
+      object-fit: contain;
+      border: solid;
+      border-width: 1px;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
   </style>
 </body>
