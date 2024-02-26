@@ -79,7 +79,7 @@ if (!isset($catid)) {
         <?php if (sizeof($categories) > 0) { ?><h3>Sub-Categories</h3><?php } ?>
         <div class="row">
           <?php foreach ($categories as $category) : ?>
-            <div class="col-3">
+            <div class="col-md-3">
               <a href="<?= $baseUrl ?>/category/<?= $category['slug']; ?>">
                 <div class="card bg-pale-sky my-3 category-box">
                   <div class="card-body mb-0">
