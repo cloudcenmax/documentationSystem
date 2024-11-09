@@ -1,6 +1,7 @@
 {
     "require": {
         "catfan/medoo": "^2.1",
-        "tinymce/tinymce": "^6.8"
+        "tinymce/tinymce": "^6.8",
+        "wpai-inc/anthropic-sdk-php": "^0.2.1"
     }
 }

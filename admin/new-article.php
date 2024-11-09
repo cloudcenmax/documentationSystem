@@ -45,9 +45,15 @@ $categories = $database->select("categories", "*");
                         <?php endforeach; ?>
                     </select>
                     <input type="text" name="tags" class="form-control mb-1 mt-1" placeholder="Tags (separated by comma ie., cpanel,whm,directadmin)" autocomplete="off">
-
-                    <hr class="my-3">
-                    <h2 class="fs-15 text-uppercase text-line text-navy m-0">SEO Settings (optional)</h2>
+                    <h2 class="fs-15 text-uppercase text-line text-navy m-0 mt-5">AI Options</h2>
+                    <hr class="mb-3 mt-1">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="rewriteWithAi20i">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Rewrite using AI for 20i article? (Check if article is copied from 20i Documentation)
+                        </label>
+                    </div>
+                    <h2 class="fs-15 text-uppercase text-line text-navy m-0 mt-5">SEO Settings (optional)</h2>
                     <hr class="mb-3 mt-1">
 
                     <input type="text" name="meta_title" class="form-control mb-1 mt-1" placeholder="Meta Title" autocomplete="off">
