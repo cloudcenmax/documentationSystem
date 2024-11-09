@@ -34,6 +34,12 @@ if ($thisPost == null) {
   <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/plugins.css">
   <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/style.css">
   <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/fonts/thicccboi.css">
+  <style>
+    .alert p {
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+    }
+  </style>
 </head>
 
 <body>
